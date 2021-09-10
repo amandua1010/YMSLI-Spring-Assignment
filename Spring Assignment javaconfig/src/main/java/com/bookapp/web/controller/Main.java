@@ -2,9 +2,9 @@ package com.bookapp.web.controller;
 
 import java.util.List;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.bookapp.config.AppConfig;
 import com.bookapp.model.service.BookService;
 import com.bookapp.model.service.BookServiceImpl;
 import com.bookapp.web.entities.Book;
@@ -13,7 +13,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 		BookService bookService = ctx.getBean("bookService", BookServiceImpl.class);
 		
 		List<Book> allBooks = bookService.getAllBooks();
