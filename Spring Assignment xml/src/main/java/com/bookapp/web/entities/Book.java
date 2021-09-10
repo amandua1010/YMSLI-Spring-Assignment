@@ -1,6 +1,7 @@
 package com.bookapp.web.entities;
 
 public class Book {
+	
 	private int id;
 	private String isbn;
 	private String title;

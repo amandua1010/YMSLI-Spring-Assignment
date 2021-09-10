@@ -14,24 +14,24 @@ public class Main {
 	public static void main(String[] args) {
 		
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
-		BookService bookService = ctx.getBean("bookService",BookServiceImpl.class);
+		BookService bookService = ctx.getBean("bookService", BookServiceImpl.class);
 		
 		List<Book> allBooks = bookService.getAllBooks();
-		allBooks.forEach( b->System.out.println(b) );
+		allBooks.forEach( book -> System.out.println(book) );
 		
 		bookService.deleteBook(1);
-		System.out.println("--After deleting---");
+		System.out.println("After Deleting");
 		
 		allBooks = bookService.getAllBooks();
-		allBooks.forEach(b->System.out.println(b));
+		allBooks.forEach( book -> System.out.println(book) );
 		
-		System.out.println("---After adding----");
+		System.out.println("After Adding");
 		
-		bookService.addBook(new Book("XAM","Life is Beautiful","Himanshu",45.0));
+		bookService.addBook(new Book("A1Z", "Random Book", "Random Author", 510.0));
 		
 		allBooks = bookService.getAllBooks();
 		
-		allBooks.forEach(b->System.out.println(b));
+		allBooks.forEach( book -> System.out.println(book) );
 		
 	}
 	

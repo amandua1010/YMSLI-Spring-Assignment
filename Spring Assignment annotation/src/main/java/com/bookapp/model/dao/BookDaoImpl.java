@@ -16,8 +16,10 @@ public class BookDaoImpl implements BookDao {
 	private static int counter = 0;
 
 	static {
+		
 		booksMap.put(++counter, new Book(counter, "ABC123", "Head first Java", "Katthy", 600));
 		booksMap.put(++counter, new Book(counter, "ABC723", "Servlet jsp Java", "Katthy", 700));
+	
 	}
 
 	public List<Book> getAllBooks() {
@@ -41,4 +43,5 @@ public class BookDaoImpl implements BookDao {
 	public Book getBookById(int id) {
 		return booksMap.get(id);
 	}
+	
 }
