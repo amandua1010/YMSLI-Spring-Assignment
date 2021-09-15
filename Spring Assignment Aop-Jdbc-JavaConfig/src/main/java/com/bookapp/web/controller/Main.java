@@ -1,0 +1,31 @@
+package com.bookapp.web.controller;
+import java.util.List;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.bookapp.model.config.AppConfig;
+import com.bookapp.model.service.BookService;
+import com.bookapp.web.entities.Book;
+
+public class Main {
+	
+	public static void main(String[] args) {		
+		
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+		
+		BookService bookService = ctx.getBean("bookService",BookService.class);
+		
+		List<Book> allBooks = bookService.getAllBooks();
+		allBooks.forEach(book -> System.out.println(book));
+		
+		bookService.deleteBook(1);
+		
+		allBooks = bookService.getAllBooks();
+		
+		allBooks.forEach(book->System.out.println(book));
+		
+		ctx.close();
+	}
+	
+}
+
